@@ -55,6 +55,9 @@ class CuboidPNPSolver(object):
                 pnp_algorithm = cv2.CV_ITERATIVE
             elif CuboidPNPSolver.cv2majorversion == 3:
                 pnp_algorithm = cv2.SOLVEPNP_ITERATIVE
+            else:
+                pnp_algorithm = cv2.SOLVEPNP_ITERATIVE
+                
                 # Alternative algorithms:
                 # pnp_algorithm = SOLVE_PNP_P3P  
                 # pnp_algorithm = SOLVE_PNP_EPNP        
@@ -80,8 +83,8 @@ class CuboidPNPSolver(object):
 
         valid_point_count = len(obj_2d_points)
 
-        # Can only do PNP if we have more than 3 valid points
-        is_points_valid = valid_point_count >= 4
+        # Can only do PNP if we have more than 5 valid points
+        is_points_valid = valid_point_count >= 6
 
         if is_points_valid:
             
